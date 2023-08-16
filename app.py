@@ -41,19 +41,10 @@ def audio():
     for choice in response.choices:
         result += choice.message.content
 
-    #tts = gTTS(result, lang='es', tld='com.mx')
-    #tts.save("response.mp3")
-    #PlaySound("response.mp3")
+    tts = gTTS(result, lang='es', tld='com.mx')
+    tts.save("response.mp3")
+    PlaySound("response.mp3")
     
-    from elevenlabs import generate, play
- 
-    audio = generate(
-    voice= "Maya",
-    model='eleven_multilingual_v1'
-    )
- 
-    play(audio)
-
 
     llm = LLM()
     function_name, args, message = llm.process_functions(text)
